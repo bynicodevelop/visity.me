@@ -5,3 +5,7 @@ h1 {
 .lead {
     @apply mx-auto mt-4 max-w-xl text-pretty text-lg/8 text-gray-600;
 }
+
+form {
+    @apply flex flex-col space-y-4;
+}

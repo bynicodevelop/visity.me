@@ -37,9 +37,3 @@ const email = defineModel<string>();
     />
   </form>
 </template>
-
-<style lang="scss" scoped>
-form {
-  @apply flex flex-col space-y-4;
-}
-</style>

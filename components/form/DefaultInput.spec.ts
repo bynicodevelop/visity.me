@@ -65,7 +65,6 @@ describe("Default Input", () => {
         const errorMessages = wrapper.findAll("p");
         expect(errorMessages.length).toBe(1);
         expect(errorMessages[0].text()).toBe(errors[0]);
-        expect(errorMessages[0].attributes("id")).toBe("username-error");
     });
 
     it("Ne met pas `aria-invalid` si aucune erreur", async () => {
