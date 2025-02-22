@@ -21,3 +21,17 @@ export const getProfile = async (username: string): Promise<{ components: Compon
     throw new Error("Error fetching user profile");
   }
 };
+
+export const createOrUpdateProfile = async (username: string, bio: string): Promise<void> => {
+  const { firestore } = useFirebaseAdmin();
+
+  try {
+    await firestore
+      .collection(PROFILES)
+      .doc(username.toLocaleLowerCase())
+      .set({ bio }, { merge: true });
+  } catch (e) {
+    error("Firestore Error:", e);
+    throw new Error("Error creating or updating user profile");
+  }
+}

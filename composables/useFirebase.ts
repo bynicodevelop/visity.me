@@ -53,10 +53,28 @@ export const useFirebase = () => {
         await signOut($auth!);
     }
 
+    const getMe = async () => {
+        return new Promise((resolve) => {
+            const unsubscribe = onAuthStateChanged($auth!, (user) => {
+                unsubscribe();
+                if(!user) {
+                    resolve(null);
+                    return;
+                }
+
+                resolve({
+                    id: user.uid,
+                    email: user.email,
+                });
+            });
+        });
+    }
+
     return {
         isAuthenticating,
         connectAccount,
         createAccount,
         logout,
+        getMe,
     }
 };
